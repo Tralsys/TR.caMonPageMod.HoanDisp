@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+		<LangVersion>9.0</LangVersion>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="images\SelectBtn_Pushed.png" />
+    <None Remove="images\SelectBtn_Released.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\SelectBtn_Pushed.png" />
+    <Resource Include="images\SelectBtn_Released.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="caMon.IPages" Version="1.0.0.2" />
+		
+  </ItemGroup>
+
+</Project>
