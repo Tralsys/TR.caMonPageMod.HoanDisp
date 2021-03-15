@@ -7,6 +7,42 @@
 						 d:DataContext="{d:DesignInstance Type=local:HoanLampState}"
 						 mc:Ignorable="d" 
 						 d:DesignHeight="600" d:DesignWidth="800">
+	<UserControl.Resources>
+		<SolidColorBrush x:Key="Lamp_Green" Color="#8C7"/>
+		<SolidColorBrush x:Key="Lamp_Orange" Color="#FC8"/>
+		<SolidColorBrush x:Key="Lamp_Red" Color="#F77"/>
+		
+		<local:TextWritingDirectionConverter x:Key="TWDirectionConv"/>
+		
+		<Style TargetType="{x:Type local:M_HoanLamp}">
+			<Setter Property="Height" Value="160"/>
+			<Setter Property="Width" Value="60"/>
+			<Setter Property="Margin" Value="10,20"/>
+			<Setter Property="Padding" Value="0,20,0,0"/>
+			<Setter Property="FontSize" Value="20"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="FontFamily" Value="MS Gothic"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type local:M_HoanLamp}">
+						<Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{x:Null}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+							<TextBlock x:Name="tb" HorizontalAlignment="Center" Margin="{TemplateBinding Padding}" Text="{TemplateBinding Text, Converter={StaticResource TWDirectionConv}}"/>
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsLighting" Value="True">
+								<Setter Property="Foreground" TargetName="tb" Value="Black"/>
+							</Trigger>
+							<Trigger Property="IsLighting" Value="False">
+								<Setter Property="Background" TargetName="border" Value="#202020"/>
+								<Setter Property="Foreground" TargetName="tb" Value="White"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</UserControl.Resources>
+	
 	<Grid Background="#202020" Height="600" MinWidth="800" HorizontalAlignment="Stretch">
 		<Rectangle Height="20" Margin="0,190,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
 			<Rectangle.Fill>
@@ -28,14 +64,54 @@
 				<ColumnDefinition Width="80"/>
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
-			<local:M_HoanLamp Height="160" Width="60" Margin="10,20" Padding="0,20,0,0" Grid.Column="1" Text="Ｐ電源" Background="Red" IsLighting="True" FontSize="20" FontWeight="Bold" FontFamily="MS Gothic"/>
-			<local:M_HoanLamp Height="160" Width="60" Margin="10,20" Padding="0,20,0,0" Grid.Column="2" Text="パタ｜ン接近" Background="Red" IsLighting="True" FontSize="20" FontWeight="Bold" FontFamily="MS Gothic"/>
-			<local:M_HoanLamp Height="160" Width="60" Margin="10,20" Padding="0,20,0,0" Grid.Column="3" Text="常用ブレ｜キ" Background="Red" IsLighting="True" FontSize="20" FontWeight="Bold" FontFamily="MS Gothic"/>
-			<local:M_HoanLamp Height="160" Width="60" Margin="10,20" Padding="0,20,0,0" Grid.Column="4" Text="非常ブレ｜キ" Background="Red" IsLighting="True" FontSize="20" FontWeight="Bold" FontFamily="MS Gothic"/>
-			<local:M_HoanLamp Height="160" Width="60" Margin="10,20" Padding="0,20,0,0" Grid.Column="5" Text="ブレ｜キ開放" Background="Red" IsLighting="True" FontSize="20" FontWeight="Bold" FontFamily="MS Gothic"/>
-			<local:M_HoanLamp Height="160" Width="60" Margin="10,20" Padding="0,20,0,0" Grid.Column="6" Text="ＡＴＳ｜Ｐ" Background="Red" IsLighting="True" FontSize="20" FontWeight="Bold" FontFamily="MS Gothic"/>
-			<local:M_HoanLamp Height="160" Width="60" Margin="10,20" Padding="0,20,0,0" Grid.Column="7" Text="故　障" Background="Red" IsLighting="True" FontSize="20" FontWeight="Bold" FontFamily="MS Gothic"/>
+			<local:M_HoanLamp DataContext="{Binding P_Dengen}"
+												Text="Ｐ電源"
+												Background="{StaticResource Lamp_Green}"
+												Grid.Column="1"
+												IsLighting="{Binding IsLighting}"/>
+			<local:M_HoanLamp DataContext="{Binding P_Pattern_Sekkin}"
+												Text="パタ｜ン接近"
+												Background="{StaticResource Lamp_Orange}"
+												Grid.Column="2"
+												IsLighting="{Binding IsLighting}"/>
+			<local:M_HoanLamp DataContext="{Binding P_Joyo_Brake}"
+												Text="常用ブレ｜キ"
+												Background="{StaticResource Lamp_Orange}"
+												Grid.Column="3"
+												IsLighting="{Binding IsLighting}"/>
+			<local:M_HoanLamp DataContext="{Binding P_Hijo_Brake}"
+												Text="非常ブレ｜キ"
+												Background="{StaticResource Lamp_Red}"
+												Grid.Column="4"
+												IsLighting="{Binding IsLighting}"/>
+			<local:M_HoanLamp DataContext="{Binding P_Brake_Kaihou}"
+												Text="ブレ｜キ開放"
+												Background="{StaticResource Lamp_Orange}"
+												Grid.Column="5"
+												IsLighting="{Binding IsLighting}"/>
+			<local:M_HoanLamp DataContext="{Binding ATS_P}"
+												Text="ＡＴＳ｜Ｐ"
+												Background="{StaticResource Lamp_Green}"
+												Grid.Column="6"
+												IsLighting="{Binding IsLighting}"/>
+			<local:M_HoanLamp DataContext="{Binding P_Kosyo}"
+												Text="故　障"
+												Background="{StaticResource Lamp_Red}"
+												Grid.Column="7"
+												IsLighting="{Binding IsLighting}"/>
 
 		</Grid>
+		
+		<!-- TO DEBUG
+		<StackPanel Orientation="Horizontal" Margin="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" Visibility="Collapsed">
+			<Button Content="P Dengen" DataContext="{Binding P_Dengen}" Margin="10" Padding="10,5" Click="Button_Click"/>
+			<Button Content="P Pattern Sekkin" DataContext="{Binding P_Pattern_Sekkin}" Margin="10" Padding="10,5" Click="Button_Click"/>
+			<Button Content="P Joyo Brake" DataContext="{Binding P_Joyo_Brake}" Margin="10" Padding="10,5" Click="Button_Click"/>
+			<Button Content="P Hijo Brake" DataContext="{Binding P_Hijo_Brake}" Margin="10" Padding="10,5" Click="Button_Click"/>
+			<Button Content="P Brake Kaihou" DataContext="{Binding P_Brake_Kaihou}" Margin="10" Padding="10,5" Click="Button_Click"/>
+			<Button Content="ATS-P" DataContext="{Binding ATS_P}" Margin="10" Padding="10,5" Click="Button_Click"/>
+			<Button Content="P Kosyo" DataContext="{Binding P_Kosyo}" Margin="10" Padding="10,5" Click="Button_Click"/>
+		</StackPanel>
+		-->
 	</Grid>
 </UserControl>
