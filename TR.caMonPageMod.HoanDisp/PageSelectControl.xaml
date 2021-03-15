@@ -7,7 +7,7 @@
              mc:Ignorable="d" >
 	<Grid Height="600" Width="800">
 		<Button Content="Go Home" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50" Padding="8" Click="GoHomePushed"/>
-		<Button Content="Close App" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,100" Padding="8" Click="ClosePushed"/>
+		<Button Content="Close App" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="50,100" Padding="8" Click="ClosePushed"/>
 
 
 		<Button Content="Setting" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="50,30" Padding="16,8" Click="ClosePushed"/>
