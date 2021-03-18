@@ -6,40 +6,35 @@
 						 xmlns:local="clr-namespace:TR.caMonPageMod.HoanDisp"
 						 d:DataContext="{d:DesignInstance Type=local:HoanLampState}"
 						 mc:Ignorable="d" 
+						 FontFamily="Gen Jyuu Gothic X Monospace Medium"
 						 d:DesignHeight="600" d:DesignWidth="800">
+	
+	<!-- ATS-P Only Page -->
+	<!-- Prototype : E233-6000(ATS-P Mode) -->
+	
 	<UserControl.Resources>
 		<SolidColorBrush x:Key="Lamp_Green" Color="#8C7"/>
-		<SolidColorBrush x:Key="Lamp_Orange" Color="#FC8"/>
+		<SolidColorBrush x:Key="Lamp_Orange" Color="#FC7"/>
 		<SolidColorBrush x:Key="Lamp_Red" Color="#F77"/>
-		
-		<local:TextWritingDirectionConverter x:Key="TWDirectionConv"/>
-		
-		<Style TargetType="{x:Type local:M_HoanLamp}">
-			<Setter Property="Height" Value="160"/>
+
+		<RotateTransform x:Key="Rotate90" Angle="90"/>
+
+		<Style TargetType="{x:Type local:HoanLamp}">
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="Height" Value="180"/>
 			<Setter Property="Width" Value="60"/>
-			<Setter Property="Margin" Value="10,20"/>
-			<Setter Property="Padding" Value="0,20,0,0"/>
+			<Setter Property="LightShadowSize" Value="4"/>
+			<Setter Property="LightShadowOpacity" Value="0.5"/>
+		</Style>
+
+		<Style TargetType="{x:Type TextBlock}">
+			<Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ContentControl}, Path=Foreground}"/>
+			<Setter Property="Margin" Value="-4"/>
+			<Setter Property="Padding" Value="0"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+			<Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
 			<Setter Property="FontSize" Value="20"/>
-			<Setter Property="FontWeight" Value="Bold"/>
-			<Setter Property="FontFamily" Value="MS Gothic"/>
-			<Setter Property="Template">
-				<Setter.Value>
-					<ControlTemplate TargetType="{x:Type local:M_HoanLamp}">
-						<Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{x:Null}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
-							<TextBlock x:Name="tb" HorizontalAlignment="Center" Margin="{TemplateBinding Padding}" Text="{TemplateBinding Text, Converter={StaticResource TWDirectionConv}}"/>
-						</Border>
-						<ControlTemplate.Triggers>
-							<Trigger Property="IsLighting" Value="True">
-								<Setter Property="Foreground" TargetName="tb" Value="Black"/>
-							</Trigger>
-							<Trigger Property="IsLighting" Value="False">
-								<Setter Property="Background" TargetName="border" Value="#202020"/>
-								<Setter Property="Foreground" TargetName="tb" Value="White"/>
-							</Trigger>
-						</ControlTemplate.Triggers>
-					</ControlTemplate>
-				</Setter.Value>
-			</Setter>
 		</Style>
 	</UserControl.Resources>
 	
@@ -52,7 +47,8 @@
 				</LinearGradientBrush>
 			</Rectangle.Fill>
 		</Rectangle>
-		<Grid Background="#303030" Height="200" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+		
+		<Grid Background="#303030" Height="210" HorizontalAlignment="Stretch" VerticalAlignment="Top">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*"/>
 				<ColumnDefinition Width="80"/>
@@ -64,46 +60,115 @@
 				<ColumnDefinition Width="80"/>
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
-			<local:M_HoanLamp DataContext="{Binding P_Dengen}"
-												Text="Ｐ電源"
+			<local:HoanLamp DataContext="{Binding P_Dengen}"
 												Background="{StaticResource Lamp_Green}"
 												Grid.Column="1"
-												IsLighting="{Binding IsLighting}"/>
-			<local:M_HoanLamp DataContext="{Binding P_Pattern_Sekkin}"
-												Text="パタ｜ン接近"
+												IsLighting="{Binding IsLighting}">
+				<local:HoanLamp.Content>
+					<StackPanel>
+						<TextBlock Text="Ｐ" Margin="0"/>
+						<TextBlock Text="電" Margin="0"/>
+						<TextBlock Text="源" Margin="0"/>
+					</StackPanel>
+				</local:HoanLamp.Content>
+			</local:HoanLamp>
+			<local:HoanLamp DataContext="{Binding P_Pattern_Sekkin}"
 												Background="{StaticResource Lamp_Orange}"
 												Grid.Column="2"
-												IsLighting="{Binding IsLighting}"/>
-			<local:M_HoanLamp DataContext="{Binding P_Joyo_Brake}"
-												Text="常用ブレ｜キ"
+												IsLighting="{Binding IsLighting}">
+				<local:HoanLamp.Content>
+					<StackPanel>
+						<TextBlock Text="パ"/>
+						<TextBlock Text="タ"/>
+						<TextBlock Text="ー" RenderTransform="{StaticResource Rotate90}"/>
+						<TextBlock Text="ン"/>
+						<TextBlock Text="接"/>
+						<TextBlock Text="近"/>
+					</StackPanel>
+				</local:HoanLamp.Content>
+			</local:HoanLamp>
+			<local:HoanLamp DataContext="{Binding P_Joyo_Brake}"
 												Background="{StaticResource Lamp_Orange}"
 												Grid.Column="3"
-												IsLighting="{Binding IsLighting}"/>
-			<local:M_HoanLamp DataContext="{Binding P_Hijo_Brake}"
-												Text="非常ブレ｜キ"
+												IsLighting="{Binding IsLighting}">
+				<local:HoanLamp.Content>
+					<StackPanel>
+						<TextBlock Text="常"/>
+						<TextBlock Text="用"/>
+						<TextBlock Text="ブ"/>
+						<TextBlock Text="レ"/>
+						<TextBlock Text="ー" RenderTransform="{StaticResource Rotate90}"/>
+						<TextBlock Text="キ"/>
+					</StackPanel>
+				</local:HoanLamp.Content>
+			</local:HoanLamp>
+
+			<local:HoanLamp DataContext="{Binding P_Hijo_Brake}"
 												Background="{StaticResource Lamp_Red}"
 												Grid.Column="4"
-												IsLighting="{Binding IsLighting}"/>
-			<local:M_HoanLamp DataContext="{Binding P_Brake_Kaihou}"
-												Text="ブレ｜キ開放"
+												IsLighting="{Binding IsLighting}">
+				<local:HoanLamp.Content>
+					<StackPanel>
+						<TextBlock Text="非"/>
+						<TextBlock Text="常"/>
+						<TextBlock Text="ブ"/>
+						<TextBlock Text="レ"/>
+						<TextBlock Text="ー" RenderTransform="{StaticResource Rotate90}"/>
+						<TextBlock Text="キ"/>
+					</StackPanel>
+				</local:HoanLamp.Content>
+			</local:HoanLamp>
+
+			<local:HoanLamp DataContext="{Binding P_Brake_Kaihou}"
 												Background="{StaticResource Lamp_Orange}"
 												Grid.Column="5"
-												IsLighting="{Binding IsLighting}"/>
-			<local:M_HoanLamp DataContext="{Binding ATS_P}"
-												Text="ＡＴＳ｜Ｐ"
+												IsLighting="{Binding IsLighting}">
+				<local:HoanLamp.Content>
+					<StackPanel>
+						<TextBlock Text="ブ"/>
+						<TextBlock Text="レ"/>
+						<TextBlock Text="ー" RenderTransform="{StaticResource Rotate90}"/>
+						<TextBlock Text="キ"/>
+						<TextBlock Text="開"/>
+						<TextBlock Text="放"/>
+					</StackPanel>
+				</local:HoanLamp.Content>
+			</local:HoanLamp>
+
+			<local:HoanLamp DataContext="{Binding ATS_P}"
 												Background="{StaticResource Lamp_Green}"
 												Grid.Column="6"
-												IsLighting="{Binding IsLighting}"/>
-			<local:M_HoanLamp DataContext="{Binding P_Kosyo}"
-												Text="故　障"
+												IsLighting="{Binding IsLighting}">
+				<local:HoanLamp.Content>
+					<StackPanel>
+						<TextBlock Text="Ａ"/>
+						<TextBlock Text="Ｔ"/>
+						<TextBlock Text="Ｓ"/>
+						<TextBlock Text="－" RenderTransform="{StaticResource Rotate90}"/>
+						<TextBlock Text="Ｐ"/>
+					</StackPanel>
+				</local:HoanLamp.Content>
+			</local:HoanLamp>
+
+			<local:HoanLamp DataContext="{Binding P_Kosyo}"
 												Background="{StaticResource Lamp_Red}"
 												Grid.Column="7"
-												IsLighting="{Binding IsLighting}"/>
+												IsLighting="{Binding IsLighting}">
+				<local:HoanLamp.Content>
+					<StackPanel>
+						<TextBlock Text="故"/>
+						<TextBlock Text=" "/>
+						<TextBlock Text="障"/>
+					</StackPanel>
+				</local:HoanLamp.Content>
+			</local:HoanLamp>
+
 
 		</Grid>
+
+		<!-- TO DEBUG-->
 		
-		<!-- TO DEBUG
-		<StackPanel Orientation="Horizontal" Margin="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" Visibility="Collapsed">
+		<StackPanel Orientation="Horizontal" Margin="30" VerticalAlignment="Bottom" HorizontalAlignment="Center">
 			<Button Content="P Dengen" DataContext="{Binding P_Dengen}" Margin="10" Padding="10,5" Click="Button_Click"/>
 			<Button Content="P Pattern Sekkin" DataContext="{Binding P_Pattern_Sekkin}" Margin="10" Padding="10,5" Click="Button_Click"/>
 			<Button Content="P Joyo Brake" DataContext="{Binding P_Joyo_Brake}" Margin="10" Padding="10,5" Click="Button_Click"/>
@@ -112,6 +177,6 @@
 			<Button Content="ATS-P" DataContext="{Binding ATS_P}" Margin="10" Padding="10,5" Click="Button_Click"/>
 			<Button Content="P Kosyo" DataContext="{Binding P_Kosyo}" Margin="10" Padding="10,5" Click="Button_Click"/>
 		</StackPanel>
-		-->
+		
 	</Grid>
 </UserControl>
