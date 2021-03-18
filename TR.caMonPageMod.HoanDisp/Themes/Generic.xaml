@@ -3,27 +3,155 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:local="clr-namespace:TR.caMonPageMod.HoanDisp">
 
-	<local:TextWritingDirectionConverter x:Key="TWDirectionConv"/>
+	<local:MarginConverter x:Key="Margin_LR" DirectionSetting="LR"/>
+	<local:MarginConverter x:Key="Margin_UD" DirectionSetting="UD"/>
+	<local:MarginConverter x:Key="Margin_Each" DirectionSetting="Each"/>
+	<local:BoolToVisibilityConverter x:Key="BoolToVisibility"/>
 
-	<Style TargetType="{x:Type local:M_HoanLamp}">
+	<Style TargetType="{x:Type local:HoanLamp}">
 		<Setter Property="Template">
 			<Setter.Value>
-				<ControlTemplate TargetType="{x:Type local:M_HoanLamp}">
-					<Border x:Name="border"
-									Background="{TemplateBinding Background}"
-									Width="{TemplateBinding Width}"
-									Height="{TemplateBinding Height}"
-									BorderBrush="{x:Null}">
-						<TextBlock x:Name="tb" Text="{TemplateBinding Text, Converter={StaticResource TWDirectionConv}}" HorizontalAlignment="Center" Margin="{TemplateBinding Padding}"/>
-					</Border>
-					
+				<ControlTemplate TargetType="{x:Type local:HoanLamp}">
+					<Grid x:Name="BaseGrid"
+								Background="{x:Null}"
+								Width="{TemplateBinding Width}"
+								Height="{TemplateBinding Height}">
+
+						<Rectangle Margin="{Binding LightShadowSize, Converter={StaticResource Margin_Each}, RelativeSource={RelativeSource Mode=TemplatedParent}}" Fill="#202020"/>
+						<Grid Visibility="{Binding IsLighting, Converter={StaticResource BoolToVisibility}, RelativeSource={RelativeSource Mode=TemplatedParent}}">
+							<Rectangle RadiusX="{TemplateBinding LightShadowSize}" RadiusY="{TemplateBinding LightShadowSize}" Margin="0" Fill="{TemplateBinding Background}"/>
+
+							<!--#region Edge Light/Shadow-->
+							<!--Light LeftSide-->
+							<Rectangle Margin="{Binding LightShadowSize, Converter={StaticResource Margin_UD}, RelativeSource={RelativeSource Mode=TemplatedParent}}" Width="{TemplateBinding LightShadowSize}" HorizontalAlignment="Left" Opacity="{TemplateBinding LightShadowOpacity}">
+								<Rectangle.Fill>
+									<LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+										<GradientStop Color="White" Offset="0.0"/>
+										<GradientStop Color="#0FFF" Offset="1.0"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<!--Light UpSide-->
+							<Rectangle Margin="{Binding LightShadowSize, Converter={StaticResource Margin_LR}, RelativeSource={RelativeSource Mode=TemplatedParent}}" Height="{TemplateBinding LightShadowSize}" VerticalAlignment="Top" Opacity="{TemplateBinding LightShadowOpacity}">
+								<Rectangle.Fill>
+									<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+										<GradientStop Color="White" Offset="0.0"/>
+										<GradientStop Color="#0FFF" Offset="1.0"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+
+							<!--Shadow RightSide-->
+							<Rectangle Margin="{Binding LightShadowSize, Converter={StaticResource Margin_UD}, RelativeSource={RelativeSource Mode=TemplatedParent}}" Width="{TemplateBinding LightShadowSize}" HorizontalAlignment="Right" Opacity="{TemplateBinding LightShadowOpacity}">
+								<Rectangle.Fill>
+									<LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+										<GradientStop Color="#0000" Offset="0.0"/>
+										<GradientStop Color="Black" Offset="1.0"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<!--Shadow BottomSide-->
+							<Rectangle Margin="{Binding LightShadowSize, Converter={StaticResource Margin_LR}, RelativeSource={RelativeSource Mode=TemplatedParent}}" Height="{TemplateBinding LightShadowSize}" VerticalAlignment="Bottom" Opacity="{TemplateBinding LightShadowOpacity}">
+								<Rectangle.Fill>
+									<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+										<GradientStop Color="#0000" Offset="0.0"/>
+										<GradientStop Color="Black" Offset="1.0"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<!--#endregion-->
+
+							<!--#region Corner Light/Shadow-->
+							<!--Shadow/Light LeftBottom-->
+							<Path HorizontalAlignment="Left" VerticalAlignment="Bottom" Opacity="{TemplateBinding LightShadowOpacity}" Stretch="Fill"
+									Height="{TemplateBinding LightShadowSize}" Width="{TemplateBinding LightShadowSize}" Data="M 0,0 A 3,3 0 0 0 3,3 L 3,0 Z">
+								<Path.Fill>
+									<LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+										<GradientStop Color="White" Offset="0.0"/>
+										<GradientStop Color="#0FFF" Offset="1.0"/>
+									</LinearGradientBrush>
+								</Path.Fill>
+							</Path>
+							<Path HorizontalAlignment="Left" VerticalAlignment="Bottom" Opacity="{TemplateBinding LightShadowOpacity}" Stretch="Fill"
+									Height="{TemplateBinding LightShadowSize}" Width="{TemplateBinding LightShadowSize}" Data="M 0,0 A 3,3 0 0 0 3,3 L 3,0 Z">
+								<Path.Fill>
+									<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+										<GradientStop Color="#0000" Offset="0.0"/>
+										<GradientStop Color="Black" Offset="1.0"/>
+									</LinearGradientBrush>
+								</Path.Fill>
+							</Path>
+
+							<!--Shadow/Light RightTop-->
+							<Path HorizontalAlignment="Right" VerticalAlignment="Top" Opacity="{TemplateBinding LightShadowOpacity}" Stretch="Fill"
+									Height="{TemplateBinding LightShadowSize}" Width="{TemplateBinding LightShadowSize}" Data="M 3,3 A 3,3 0 0 0 0,0 L 0,3 Z">
+								<Path.Fill>
+									<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+										<GradientStop Color="White" Offset="0.0"/>
+										<GradientStop Color="#0FFF" Offset="1.0"/>
+									</LinearGradientBrush>
+								</Path.Fill>
+							</Path>
+							<Path HorizontalAlignment="Right" VerticalAlignment="Top" Opacity="{TemplateBinding LightShadowOpacity}" Stretch="Fill"
+									Height="{TemplateBinding LightShadowSize}" Width="{TemplateBinding LightShadowSize}" Data="M 3,3 A 3,3 0 0 0 0,0 L 0,3 Z">
+								<Path.Fill>
+									<LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+										<GradientStop Color="#0000" Offset="0.0"/>
+										<GradientStop Color="Black" Offset="1.0"/>
+									</LinearGradientBrush>
+								</Path.Fill>
+							</Path>
+
+							<!--Light LeftTop-->
+							<Path HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="{TemplateBinding LightShadowOpacity}" Stretch="Fill"
+									Height="{TemplateBinding LightShadowSize}" Width="{TemplateBinding LightShadowSize}" Data="M 3,0 A 3,3 0 0 0 0,3 L 3,3 Z">
+								<Path.Fill>
+									<LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+										<GradientStop Color="White" Offset="0.0"/>
+										<GradientStop Color="#0FFF" Offset="1.0"/>
+									</LinearGradientBrush>
+								</Path.Fill>
+							</Path>
+							<Path HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="{TemplateBinding LightShadowOpacity}" Stretch="Fill"
+									Height="{TemplateBinding LightShadowSize}" Width="{TemplateBinding LightShadowSize}" Data="M 3,0 A 3,3 0 0 0 0,3 L 3,3 Z">
+								<Path.Fill>
+									<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+										<GradientStop Color="White" Offset="0.0"/>
+										<GradientStop Color="#0FFF" Offset="1.0"/>
+									</LinearGradientBrush>
+								</Path.Fill>
+							</Path>
+
+							<!--Shadow RightBottom-->
+							<Path HorizontalAlignment="Right" VerticalAlignment="Bottom" Opacity="{TemplateBinding LightShadowOpacity}" Stretch="Fill"
+									Height="{TemplateBinding LightShadowSize}" Width="{TemplateBinding LightShadowSize}" Data="M 0,3 A 3,3 0 0 0 3,0 L 0,0 Z">
+								<Path.Fill>
+									<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+										<GradientStop Color="#0000" Offset="0.0"/>
+										<GradientStop Color="Black" Offset="1.0"/>
+									</LinearGradientBrush>
+								</Path.Fill>
+							</Path>
+							<Path HorizontalAlignment="Right" VerticalAlignment="Bottom" Opacity="{TemplateBinding LightShadowOpacity}" Stretch="Fill"
+									Height="{TemplateBinding LightShadowSize}" Width="{TemplateBinding LightShadowSize}" Data="M 0,3 A 3,3 0 0 0 3,0 L 0,0 Z">
+								<Path.Fill>
+									<LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+										<GradientStop Color="#0000" Offset="0.0"/>
+										<GradientStop Color="Black" Offset="1.0"/>
+									</LinearGradientBrush>
+								</Path.Fill>
+							</Path>
+							<!--#endregion-->
+						</Grid>
+
+						<ContentControl x:Name="ContentToShow" Margin="{TemplateBinding Padding}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+					</Grid>
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsLighting" Value="True">
-							<Setter TargetName="tb" Property="Foreground" Value="Black"/>
+							<Setter TargetName="ContentToShow" Property="Foreground" Value="Black"/>
 						</Trigger>
 						<Trigger Property="IsLighting" Value="False">
-							<Setter TargetName="border" Property="Background" Value="#202020"/>
-							<Setter TargetName="tb" Property="Foreground" Value="White"/>
+							<Setter TargetName="ContentToShow" Property="Foreground" Value="White"/>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
