@@ -34,12 +34,6 @@
 					</ControlTemplate>
 				</Button.Template>
 			</Button>
-
-			<Viewbox HorizontalAlignment="Left" VerticalAlignment="Top">
-				<Canvas Height="600" Width="48" HorizontalAlignment="Left" VerticalAlignment="Top">
-				</Canvas>
-			</Viewbox>
-
 		</Grid>
 	</Viewbox>
 </Page>
