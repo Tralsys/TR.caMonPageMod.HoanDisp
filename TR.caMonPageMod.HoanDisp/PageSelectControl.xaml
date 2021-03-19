@@ -4,13 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TR.caMonPageMod.HoanDisp"
-             mc:Ignorable="d" >
+						 FontFamily="Gen Jyuu GothicX Normal"
+						 mc:Ignorable="d" FontSize="14">
 	<Grid Height="600" Width="800">
-		<Button Content="Go Home" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50" Padding="8" Click="GoHomePushed"/>
-		<Button Content="Close App" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="50,100" Padding="8" Click="ClosePushed"/>
+		<local:CustomButton Content="Go Home" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50" Padding="8" Click="GoHomePushed"/>
+		<local:CustomButton Content="Close App" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="50,100" Padding="8" Click="ClosePushed"/>
 
 
-		<Button Content="Setting" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="50,30" Padding="16,8" Click="ClosePushed"/>
+		<local:CustomButton Content="Setting" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="50,30" Padding="16,8" Click="GoSettingPushed"/>
 
 		<Grid Margin="50,150">
 			<Grid.ColumnDefinitions>
@@ -26,25 +27,27 @@
 				<RowDefinition Height="*"/>
 			</Grid.RowDefinitions>
 
-			<Button Content="ATS-P" Margin="4" Grid.Row="0" Grid.Column="0" Click="SelButonClicked"/>
-			<Button Content="ATS-P/Sn" Margin="4" Grid.Row="0" Grid.Column="1" Click="SelButonClicked" IsEnabled="False"/>
-			<Button Content="ATS-P + TASC/FD" Margin="4" Grid.Row="0" Grid.Column="2" Click="SelButonClicked" IsEnabled="False"/>
-			<Button Content="ATS-P/Sn + TASC/FD" Margin="4" Grid.Row="0" Grid.Column="3" Click="SelButonClicked" IsEnabled="False"/>
+			<local:CustomButton Content="ATS-P" Margin="4" Grid.Row="0" Grid.Column="0" Click="SelButonClicked"/>
+			<local:CustomButton Content="ATS-P/Sn" Margin="4" Grid.Row="0" Grid.Column="1" Click="SelButonClicked" IsEnabled="False"/>
+			<local:CustomButton Content="ATS-P + TASC/FD" Margin="4" Grid.Row="0" Grid.Column="2" Click="SelButonClicked" IsEnabled="False"/>
+			<local:CustomButton Content="ATS-P/Sn + TASC/FD" Margin="4" Grid.Row="0" Grid.Column="3" Click="SelButonClicked" IsEnabled="False"/>
 
-			<Button Content="D-ATC" Margin="4" Grid.Row="1" Grid.Column="0" Click="SelButonClicked" IsEnabled="False"/>
-			<Button Content="D-ATC + TASC/FD" Margin="4" Grid.Row="1" Grid.Column="1" Click="SelButonClicked" IsEnabled="False"/>
-			<Button Content="ATACS" Margin="4" Grid.Row="1" Grid.Column="2" Click="SelButonClicked" IsEnabled="False"/>
-			<Button Content="ATACS + TASC/FD" Margin="4" Grid.Row="1" Grid.Column="3" Click="SelButonClicked" IsEnabled="False"/>
+			<local:CustomButton Content="D-ATC" Margin="4" Grid.Row="1" Grid.Column="0" Click="SelButonClicked" IsEnabled="False"/>
+			<local:CustomButton Content="D-ATC + TASC/FD" Margin="4" Grid.Row="1" Grid.Column="1" Click="SelButonClicked" IsEnabled="False"/>
+			<local:CustomButton Content="ATACS" Margin="4" Grid.Row="1" Grid.Column="2" Click="SelButonClicked" IsEnabled="False"/>
+			<local:CustomButton Content="ATACS + TASC/FD" Margin="4" Grid.Row="1" Grid.Column="3" Click="SelButonClicked" IsEnabled="False"/>
 
-			<Button Content="ATC-6" Margin="4" Grid.Row="2" Grid.Column="0" Click="SelButonClicked" IsEnabled="False"/>
-			<Button Content="ATC-10" Margin="4" Grid.Row="2" Grid.Column="1" Click="SelButonClicked" IsEnabled="False"/>
-			<Button Content="XXXXXXX" Margin="4" Grid.Row="2" Grid.Column="2" Visibility="Collapsed" Click="SelButonClicked" IsEnabled="False"/>
-			<Button Content="XXXXXXX" Margin="4" Grid.Row="2" Grid.Column="3" Visibility="Collapsed" Click="SelButonClicked" IsEnabled="False"/>
+			<local:CustomButton Content="ATC-6" Margin="4" Grid.Row="2" Grid.Column="0" Click="SelButonClicked" IsEnabled="False"/>
+			<local:CustomButton Content="ATC-10" Margin="4" Grid.Row="2" Grid.Column="1" Click="SelButonClicked" IsEnabled="False"/>
+			<local:CustomButton Content="XXXXXXX" Margin="4" Grid.Row="2" Grid.Column="2" Visibility="Collapsed" Click="SelButonClicked" IsEnabled="False"/>
+			<local:CustomButton Content="XXXXXXX" Margin="4" Grid.Row="2" Grid.Column="3" Visibility="Collapsed" Click="SelButonClicked" IsEnabled="False"/>
 
-			<Button Content="DS-ATC" Margin="4" Grid.Row="3" Grid.Column="0" Click="SelButonClicked" IsEnabled="False"/>
-			<Button Content="NS-ATC" Margin="4" Grid.Row="3" Grid.Column="1" Click="SelButonClicked" IsEnabled="False"/>
-			<Button Content="XXXXXXX" Margin="4" Grid.Row="2" Grid.Column="2" Visibility="Collapsed" Click="SelButonClicked" IsEnabled="False"/>
-			<Button Content="KO-ATC" Margin="4" Grid.Row="3" Grid.Column="3" Click="SelButonClicked" IsEnabled="False"/>
+			<local:CustomButton Content="DS-ATC" Margin="4" Grid.Row="3" Grid.Column="0" Click="SelButonClicked" IsEnabled="False"/>
+			<local:CustomButton Content="NS-ATC" Margin="4" Grid.Row="3" Grid.Column="1" Click="SelButonClicked" IsEnabled="False"/>
+			<local:CustomButton Content="XXXXXXX" Margin="4" Grid.Row="2" Grid.Column="2" Visibility="Collapsed" Click="SelButonClicked" IsEnabled="False"/>
+			<local:CustomButton Content="KO-ATC" Margin="4" Grid.Row="3" Grid.Column="3" Click="SelButonClicked" IsEnabled="False"/>
 		</Grid>
+
+		<TextBlock x:Name="CopyrightTB" Margin="0,0,150,40" HorizontalAlignment="Right" VerticalAlignment="Bottom" TextAlignment="Left" Foreground="White" FontSize="12"/>
 	</Grid>
 </UserControl>
