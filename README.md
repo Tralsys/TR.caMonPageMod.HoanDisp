@@ -1,4 +1,6 @@
 # TR.caMonPageMod.HoanDisp
+[![Build And Test](https://github.com/Tralsys/TR.caMonPageMod.HoanDisp/actions/workflows/TestAction.yml/badge.svg)](https://github.com/Tralsys/TR.caMonPageMod.HoanDisp/actions/workflows/TestAction.yml)
+[![Pack Latest Build](https://github.com/Tralsys/TR.caMonPageMod.HoanDisp/actions/workflows/PackAction.yml/badge.svg)](https://github.com/Tralsys/TR.caMonPageMod.HoanDisp/actions/workflows/PackAction.yml)
 caMonのPageModとして機能する, 保安装置表示灯を模擬した画面を提供します.
 
 ## 使用方法
