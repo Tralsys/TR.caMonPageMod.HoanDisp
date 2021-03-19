@@ -35,5 +35,10 @@ Licensed under SIL Open Font License 1.1 (http://scripts.sil.org/OFL)
 					break;
 			}
 		}
+
+		private void GoSettingPushed(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }
