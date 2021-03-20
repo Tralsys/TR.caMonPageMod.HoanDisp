@@ -6,7 +6,7 @@
 						 xmlns:local="clr-namespace:TR.caMonPageMod.HoanDisp"
 						 d:DataContext="{d:DesignInstance Type=local:HoanLampState}"
 						 mc:Ignorable="d" 
-						 FontFamily="Gen Jyuu Gothic X Monospace Medium"
+						 FontFamily="Gen Jyuu Gothic X Monospace Normal"
 						 d:DesignHeight="600" d:DesignWidth="800">
 	
 	<!-- ATS-P Only Page -->
