@@ -39,7 +39,7 @@
 	</UserControl.Resources>
 	
 	<Grid Background="#202020" Height="600" MinWidth="800" HorizontalAlignment="Stretch">
-		<Rectangle Height="20" Margin="0,190,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+		<Rectangle Height="20" Margin="0,200,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
 			<Rectangle.Fill>
 				<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
 					<GradientStop Color="Black" Offset="0.0"/>
