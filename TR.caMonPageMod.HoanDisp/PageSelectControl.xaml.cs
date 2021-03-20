@@ -33,6 +33,10 @@ Licensed under SIL Open Font License 1.1 (http://scripts.sil.org/OFL)
 				case "ATS-P":
 					TP.ChangeThePage(new Page_ATSP(HLampState));
 					break;
+
+				case "ATS-P/Sn":
+					TP.ChangeThePage(new Page_ATSP_Sn(HLampState));
+					break;
 			}
 		}
 
