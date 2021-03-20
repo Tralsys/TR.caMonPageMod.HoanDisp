@@ -165,18 +165,5 @@
 
 
 		</Grid>
-
-		<!-- TO DEBUG-->
-		
-		<StackPanel Orientation="Horizontal" Margin="30" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-			<Button Content="P Dengen" DataContext="{Binding P_Dengen}" Margin="10" Padding="10,5" Click="Button_Click"/>
-			<Button Content="P Pattern Sekkin" DataContext="{Binding P_Pattern_Sekkin}" Margin="10" Padding="10,5" Click="Button_Click"/>
-			<Button Content="P Joyo Brake" DataContext="{Binding P_Joyo_Brake}" Margin="10" Padding="10,5" Click="Button_Click"/>
-			<Button Content="P Hijo Brake" DataContext="{Binding P_Hijo_Brake}" Margin="10" Padding="10,5" Click="Button_Click"/>
-			<Button Content="P Brake Kaihou" DataContext="{Binding P_Brake_Kaihou}" Margin="10" Padding="10,5" Click="Button_Click"/>
-			<Button Content="ATS-P" DataContext="{Binding ATS_P}" Margin="10" Padding="10,5" Click="Button_Click"/>
-			<Button Content="P Kosyo" DataContext="{Binding P_Kosyo}" Margin="10" Padding="10,5" Click="Button_Click"/>
-		</StackPanel>
-		
 	</Grid>
 </UserControl>
