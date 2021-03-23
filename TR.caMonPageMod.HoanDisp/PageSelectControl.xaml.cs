@@ -45,6 +45,11 @@ Licensed under SIL Open Font License 1.1 (http://scripts.sil.org/OFL)
 				case "D-ATC + TASC/FD":
 					TP.ChangeThePage(new Page_DATC_TASCFD(HLampState));
 					break;
+
+				case "ATACS":
+					TP.ChangeThePage(new Page_ATACS(HLampState));
+					break;
+
 			}
 		}
 

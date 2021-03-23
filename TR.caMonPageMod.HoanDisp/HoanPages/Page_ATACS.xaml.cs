@@ -7,8 +7,9 @@ namespace TR.caMonPageMod.HoanDisp
 	/// </summary>
 	public partial class Page_ATACS : UserControl
 	{
-		public Page_ATACS()
+		public Page_ATACS(HoanLampState hls)
 		{
+			DataContext = hls;
 			InitializeComponent();
 		}
 	}
