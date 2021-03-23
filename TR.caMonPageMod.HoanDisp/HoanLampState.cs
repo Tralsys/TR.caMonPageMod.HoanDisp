@@ -69,6 +69,8 @@ namespace TR.caMonPageMod.HoanDisp
 		public HoanLampClass FD_Bunri { get => _FD_Bunri; set { _FD_Bunri = value; propertyChanged(nameof(FD_Bunri)); } }
 		HoanLampClass _FD_TendoBoshi_Brake = new();
 		public HoanLampClass FD_TendoBoshi_Brake { get => _FD_TendoBoshi_Brake; set { _FD_TendoBoshi_Brake = value; propertyChanged(nameof(FD_TendoBoshi_Brake)); } }
+		HoanLampClass _FD_Kaihou = new();
+		public HoanLampClass FD_Kaihou { get => _FD_Kaihou; set { _FD_Kaihou = value; propertyChanged(nameof(FD_Kaihou)); } }
 		#endregion
 
 		#region D-ATC
