@@ -50,6 +50,10 @@ Licensed under SIL Open Font License 1.1 (http://scripts.sil.org/OFL)
 					TP.ChangeThePage(new Page_ATACS(HLampState));
 					break;
 
+				case "ATACS + TASC/FD":
+					TP.ChangeThePage(new Page_ATACS_TASCFD(HLampState));
+					break;
+
 			}
 		}
 
