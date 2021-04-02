@@ -60,10 +60,10 @@
 				<ColumnDefinition Width="80"/>
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
-			<local:HoanLamp DataContext="{Binding P_Dengen}"
+			<local:HoanLamp DataContext="{Binding ATSP.Power}"
 												Background="{StaticResource Lamp_Green}"
 												Grid.Column="1"
-												IsLighting="{Binding IsLighting}">
+												IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="Ｐ" Margin="0"/>
@@ -72,10 +72,10 @@
 					</StackPanel>
 				</local:HoanLamp.Content>
 			</local:HoanLamp>
-			<local:HoanLamp DataContext="{Binding P_Pattern_Sekkin}"
+			<local:HoanLamp DataContext="{Binding ATSP.PatternOnComing}"
 												Background="{StaticResource Lamp_Orange}"
 												Grid.Column="2"
-												IsLighting="{Binding IsLighting}">
+												IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="パ"/>
@@ -87,10 +87,10 @@
 					</StackPanel>
 				</local:HoanLamp.Content>
 			</local:HoanLamp>
-			<local:HoanLamp DataContext="{Binding P_Joyo_Brake}"
+			<local:HoanLamp DataContext="{Binding ATSP.NormalBrake}"
 												Background="{StaticResource Lamp_Orange}"
 												Grid.Column="3"
-												IsLighting="{Binding IsLighting}">
+												IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="常"/>
@@ -103,10 +103,10 @@
 				</local:HoanLamp.Content>
 			</local:HoanLamp>
 
-			<local:HoanLamp DataContext="{Binding P_Hijo_Brake}"
+			<local:HoanLamp DataContext="{Binding ATSP.EmergencyBrake}"
 												Background="{StaticResource Lamp_Red}"
 												Grid.Column="4"
-												IsLighting="{Binding IsLighting}">
+												IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="非"/>
@@ -119,10 +119,10 @@
 				</local:HoanLamp.Content>
 			</local:HoanLamp>
 
-			<local:HoanLamp DataContext="{Binding P_Brake_Kaihou}"
+			<local:HoanLamp DataContext="{Binding ATSP.BrakeCutOut}"
 												Background="{StaticResource Lamp_Orange}"
 												Grid.Column="5"
-												IsLighting="{Binding IsLighting}">
+												IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="ブ"/>
@@ -135,10 +135,10 @@
 				</local:HoanLamp.Content>
 			</local:HoanLamp>
 
-			<local:HoanLamp DataContext="{Binding ATS_P}"
+			<local:HoanLamp DataContext="{Binding ATSP.ATSP}"
 												Background="{StaticResource Lamp_Green}"
 												Grid.Column="6"
-												IsLighting="{Binding IsLighting}">
+												IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="Ａ"/>
@@ -150,10 +150,10 @@
 				</local:HoanLamp.Content>
 			</local:HoanLamp>
 
-			<local:HoanLamp DataContext="{Binding P_Kosyo}"
+			<local:HoanLamp DataContext="{Binding ATSP.Fault}"
 												Background="{StaticResource Lamp_Red}"
 												Grid.Column="7"
-												IsLighting="{Binding IsLighting}">
+												IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="故"/>

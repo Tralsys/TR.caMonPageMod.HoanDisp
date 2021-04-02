@@ -73,11 +73,11 @@
 			</Grid.RowDefinitions>
 
 			<!--#region Row 0-->
-			<local:HoanLamp DataContext="{Binding Digital_ATC}"
+			<local:HoanLamp DataContext="{Binding DATC.DATC}"
 										Background="{StaticResource Lamp_Orange}"
 										Grid.Column="1"
 										Grid.Row="0"
-										IsLighting="{Binding IsLighting}">
+										IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel Orientation="Horizontal">
 						<StackPanel VerticalAlignment="Bottom">
@@ -95,11 +95,11 @@
 				</local:HoanLamp.Content>
 			</local:HoanLamp>
 
-			<local:HoanLamp DataContext="{Binding ATC}"
+			<local:HoanLamp DataContext="{Binding DATC.ATC}"
 										Background="{StaticResource Lamp_Orange}"
 										Grid.Column="2"
 										Grid.Row="0"
-										IsLighting="{Binding IsLighting}">
+										IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="Ａ"/>
@@ -109,11 +109,11 @@
 				</local:HoanLamp.Content>
 			</local:HoanLamp>
 
-			<local:HoanLamp DataContext="{Binding DATC_Off}"
+			<local:HoanLamp DataContext="{Binding DATC.Off}"
 										Background="{StaticResource Lamp_Orange}"
 										Grid.Column="3"
 										Grid.Row="0"
-										IsLighting="{Binding IsLighting}">
+										IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="切"/>
@@ -121,11 +121,11 @@
 				</local:HoanLamp.Content>
 			</local:HoanLamp>
 
-			<local:HoanLamp DataContext="{Binding ATS_Dengen}"
+			<local:HoanLamp DataContext="{Binding ATSSn.WhiteLamp}"
 										Background="{StaticResource Lamp_Orange}"
 										Grid.Column="4"
 										Grid.Row="0"
-										IsLighting="{Binding IsLighting}">
+										IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="Ａ"/>
@@ -137,11 +137,11 @@
 				</local:HoanLamp.Content>
 			</local:HoanLamp>
 
-			<local:HoanLamp DataContext="{Binding DATC_Pattern_Teigen}"
+			<local:HoanLamp DataContext="{Binding DATC.LowerPattern}"
 										Background="{StaticResource Lamp_Orange}"
 										Grid.Column="5"
 										Grid.Row="0"
-										IsLighting="{Binding IsLighting}">
+										IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel Orientation="Horizontal">
 						<StackPanel VerticalAlignment="Bottom">
@@ -158,11 +158,11 @@
 				</local:HoanLamp.Content>
 			</local:HoanLamp>
 
-			<local:HoanLamp DataContext="{Binding DATC_Hijo_Unten}"
+			<local:HoanLamp DataContext="{Binding DATC.EmergencyOperation}"
 										Background="{StaticResource Lamp_Red}"
 										Grid.Column="6"
 										Grid.Row="0"
-										IsLighting="{Binding IsLighting}">
+										IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="非"/>
@@ -175,11 +175,11 @@
 			<!--#endregion Row 0-->
 
 			<!--#region Row 1-->
-			<local:HoanLamp DataContext="{Binding DATC_Joyo}"
+			<local:HoanLamp DataContext="{Binding DATC.NormalBrake}"
 										Background="{StaticResource Lamp_Orange}"
 										Grid.Column="1"
 										Grid.Row="1"
-										IsLighting="{Binding IsLighting}">
+										IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="Ａ"/>
@@ -191,11 +191,11 @@
 				</local:HoanLamp.Content>
 			</local:HoanLamp>
 
-			<local:HoanLamp DataContext="{Binding DATC_Hijo}"
+			<local:HoanLamp DataContext="{Binding DATC.EmergencyBrake}"
 										Background="{StaticResource Lamp_Red}"
 										Grid.Column="2"
 										Grid.Row="1"
-										IsLighting="{Binding IsLighting}">
+										IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="Ａ"/>
@@ -207,11 +207,11 @@
 				</local:HoanLamp.Content>
 			</local:HoanLamp>
 
-			<local:HoanLamp DataContext="{Binding DATC_TeitsuBoshi_Dousa}"
+			<local:HoanLamp DataContext="{Binding DATC.MisspassingPreventer}"
 										Background="{StaticResource Lamp_Orange}"
 										Grid.Column="3"
 										Grid.Row="1"
-										IsLighting="{Binding IsLighting}">
+										IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel Orientation="Horizontal">
 						<StackPanel VerticalAlignment="Bottom">
@@ -228,11 +228,11 @@
 				</local:HoanLamp.Content>
 			</local:HoanLamp>
 
-			<local:HoanLamp DataContext="{Binding ATS_Dousa}"
+			<local:HoanLamp DataContext="{Binding ATSSn.RedLamp}"
 										Background="{StaticResource Lamp_Red}"
 										Grid.Column="4"
 										Grid.Row="1"
-										IsLighting="{Binding IsLighting}">
+										IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="Ａ"/>
@@ -244,11 +244,11 @@
 				</local:HoanLamp.Content>
 			</local:HoanLamp>
 
-			<local:HoanLamp DataContext="{Binding DATC_Power}"
+			<local:HoanLamp DataContext="{Binding DATC.Power}"
 										Background="{StaticResource Lamp_Orange}"
 										Grid.Column="5"
 										Grid.Row="1"
-										IsLighting="{Binding IsLighting}">
+										IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="Ａ"/>
@@ -260,11 +260,11 @@
 				</local:HoanLamp.Content>
 			</local:HoanLamp>
 
-			<local:HoanLamp DataContext="{Binding DATC_Kaihou}"
+			<local:HoanLamp DataContext="{Binding DATC.CutOut}"
 										Background="{StaticResource Lamp_Red}"
 										Grid.Column="6"
 										Grid.Row="1"
-										IsLighting="{Binding IsLighting}">
+										IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="Ａ"/>
