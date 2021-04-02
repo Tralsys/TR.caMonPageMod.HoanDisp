@@ -33,6 +33,35 @@ Licensed under SIL Open Font License 1.1 (http://scripts.sil.org/OFL)
 				case "ATS-P":
 					TP.ChangeThePage(new Page_ATSP(HLampState));
 					break;
+
+				case "ATS-P/Sn":
+					TP.ChangeThePage(new Page_ATSP_Sn(HLampState));
+					break;
+
+				case "ATS-P + TASC/FD":
+					TP.ChangeThePage(new Page_ATSP_TASCFD(HLampState));
+					break;
+
+				case "ATS-P/Sn + TASC/FD":
+					TP.ChangeThePage(new Page_ATSP_Sn_TASCFD(HLampState));
+					break;
+
+				case "D-ATC":
+					TP.ChangeThePage(new Page_DATC(HLampState));
+					break;
+
+				case "D-ATC + TASC/FD":
+					TP.ChangeThePage(new Page_DATC_TASCFD(HLampState));
+					break;
+
+				case "ATACS":
+					TP.ChangeThePage(new Page_ATACS(HLampState));
+					break;
+
+				case "ATACS + TASC/FD":
+					TP.ChangeThePage(new Page_ATACS_TASCFD(HLampState));
+					break;
+
 			}
 		}
 

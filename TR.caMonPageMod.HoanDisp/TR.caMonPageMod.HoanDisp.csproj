@@ -1,7 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
 		<LangVersion>9.0</LangVersion>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
@@ -17,7 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="caMon.IPages" Version="1.0.0.2" />
+    <PackageReference Include="BIDSDataUpdateNotifier" Version="1.0.0" />
+    <PackageReference Include="caMon.IPages" Version="2.0.0" />
 		
   </ItemGroup>
 

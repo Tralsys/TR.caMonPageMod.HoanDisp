@@ -6,7 +6,7 @@
 						 xmlns:local="clr-namespace:TR.caMonPageMod.HoanDisp"
 						 d:DataContext="{d:DesignInstance Type=local:HoanLampState}"
 						 mc:Ignorable="d" 
-						 FontFamily="Gen Jyuu Gothic X Monospace Medium"
+						 FontFamily="Gen Jyuu Gothic X Monospace Normal"
 						 d:DesignHeight="600" d:DesignWidth="800">
 	
 	<!-- ATS-P Only Page -->
@@ -39,7 +39,7 @@
 	</UserControl.Resources>
 	
 	<Grid Background="#202020" Height="600" MinWidth="800" HorizontalAlignment="Stretch">
-		<Rectangle Height="20" Margin="0,190,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+		<Rectangle Height="20" Margin="0,200,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
 			<Rectangle.Fill>
 				<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
 					<GradientStop Color="Black" Offset="0.0"/>
@@ -60,10 +60,10 @@
 				<ColumnDefinition Width="80"/>
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
-			<local:HoanLamp DataContext="{Binding P_Dengen}"
+			<local:HoanLamp DataContext="{Binding ATSP.Power}"
 												Background="{StaticResource Lamp_Green}"
 												Grid.Column="1"
-												IsLighting="{Binding IsLighting}">
+												IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="Ｐ" Margin="0"/>
@@ -72,10 +72,10 @@
 					</StackPanel>
 				</local:HoanLamp.Content>
 			</local:HoanLamp>
-			<local:HoanLamp DataContext="{Binding P_Pattern_Sekkin}"
+			<local:HoanLamp DataContext="{Binding ATSP.PatternOnComing}"
 												Background="{StaticResource Lamp_Orange}"
 												Grid.Column="2"
-												IsLighting="{Binding IsLighting}">
+												IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="パ"/>
@@ -87,10 +87,10 @@
 					</StackPanel>
 				</local:HoanLamp.Content>
 			</local:HoanLamp>
-			<local:HoanLamp DataContext="{Binding P_Joyo_Brake}"
+			<local:HoanLamp DataContext="{Binding ATSP.NormalBrake}"
 												Background="{StaticResource Lamp_Orange}"
 												Grid.Column="3"
-												IsLighting="{Binding IsLighting}">
+												IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="常"/>
@@ -103,10 +103,10 @@
 				</local:HoanLamp.Content>
 			</local:HoanLamp>
 
-			<local:HoanLamp DataContext="{Binding P_Hijo_Brake}"
+			<local:HoanLamp DataContext="{Binding ATSP.EmergencyBrake}"
 												Background="{StaticResource Lamp_Red}"
 												Grid.Column="4"
-												IsLighting="{Binding IsLighting}">
+												IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="非"/>
@@ -119,10 +119,10 @@
 				</local:HoanLamp.Content>
 			</local:HoanLamp>
 
-			<local:HoanLamp DataContext="{Binding P_Brake_Kaihou}"
+			<local:HoanLamp DataContext="{Binding ATSP.BrakeCutOut}"
 												Background="{StaticResource Lamp_Orange}"
 												Grid.Column="5"
-												IsLighting="{Binding IsLighting}">
+												IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="ブ"/>
@@ -135,10 +135,10 @@
 				</local:HoanLamp.Content>
 			</local:HoanLamp>
 
-			<local:HoanLamp DataContext="{Binding ATS_P}"
+			<local:HoanLamp DataContext="{Binding ATSP.ATSP}"
 												Background="{StaticResource Lamp_Green}"
 												Grid.Column="6"
-												IsLighting="{Binding IsLighting}">
+												IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="Ａ"/>
@@ -150,10 +150,10 @@
 				</local:HoanLamp.Content>
 			</local:HoanLamp>
 
-			<local:HoanLamp DataContext="{Binding P_Kosyo}"
+			<local:HoanLamp DataContext="{Binding ATSP.Fault}"
 												Background="{StaticResource Lamp_Red}"
 												Grid.Column="7"
-												IsLighting="{Binding IsLighting}">
+												IsLighting="{Binding Value}">
 				<local:HoanLamp.Content>
 					<StackPanel>
 						<TextBlock Text="故"/>
@@ -165,18 +165,5 @@
 
 
 		</Grid>
-
-		<!-- TO DEBUG-->
-		
-		<StackPanel Orientation="Horizontal" Margin="30" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-			<Button Content="P Dengen" DataContext="{Binding P_Dengen}" Margin="10" Padding="10,5" Click="Button_Click"/>
-			<Button Content="P Pattern Sekkin" DataContext="{Binding P_Pattern_Sekkin}" Margin="10" Padding="10,5" Click="Button_Click"/>
-			<Button Content="P Joyo Brake" DataContext="{Binding P_Joyo_Brake}" Margin="10" Padding="10,5" Click="Button_Click"/>
-			<Button Content="P Hijo Brake" DataContext="{Binding P_Hijo_Brake}" Margin="10" Padding="10,5" Click="Button_Click"/>
-			<Button Content="P Brake Kaihou" DataContext="{Binding P_Brake_Kaihou}" Margin="10" Padding="10,5" Click="Button_Click"/>
-			<Button Content="ATS-P" DataContext="{Binding ATS_P}" Margin="10" Padding="10,5" Click="Button_Click"/>
-			<Button Content="P Kosyo" DataContext="{Binding P_Kosyo}" Margin="10" Padding="10,5" Click="Button_Click"/>
-		</StackPanel>
-		
 	</Grid>
 </UserControl>

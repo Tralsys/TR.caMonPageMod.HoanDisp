@@ -21,6 +21,10 @@ namespace TR.caMonPageMod.HoanDisp
 			=> ChangeThePage(new PageSelectControl(this));
 
 		internal void ChangeThePage(UIElement elem)
-			=> MainViewBox.Child = elem;
+		{
+			MainViewBox.Child = elem;
+			if (elem is Control c)
+				c.FontFamily = this.FontFamily;
+		}
 	}
 }

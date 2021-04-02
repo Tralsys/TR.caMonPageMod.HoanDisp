@@ -28,14 +28,14 @@
 			</Grid.RowDefinitions>
 
 			<local:CustomButton Content="ATS-P" Margin="4" Grid.Row="0" Grid.Column="0" Click="SelButonClicked"/>
-			<local:CustomButton Content="ATS-P/Sn" Margin="4" Grid.Row="0" Grid.Column="1" Click="SelButonClicked" IsEnabled="False"/>
-			<local:CustomButton Content="ATS-P + TASC/FD" Margin="4" Grid.Row="0" Grid.Column="2" Click="SelButonClicked" IsEnabled="False"/>
-			<local:CustomButton Content="ATS-P/Sn + TASC/FD" Margin="4" Grid.Row="0" Grid.Column="3" Click="SelButonClicked" IsEnabled="False"/>
+			<local:CustomButton Content="ATS-P/Sn" Margin="4" Grid.Row="0" Grid.Column="1" Click="SelButonClicked"/>
+			<local:CustomButton Content="ATS-P + TASC/FD" Margin="4" Grid.Row="0" Grid.Column="2" Click="SelButonClicked"/>
+			<local:CustomButton Content="ATS-P/Sn + TASC/FD" Margin="4" Grid.Row="0" Grid.Column="3" Click="SelButonClicked"/>
 
-			<local:CustomButton Content="D-ATC" Margin="4" Grid.Row="1" Grid.Column="0" Click="SelButonClicked" IsEnabled="False"/>
-			<local:CustomButton Content="D-ATC + TASC/FD" Margin="4" Grid.Row="1" Grid.Column="1" Click="SelButonClicked" IsEnabled="False"/>
-			<local:CustomButton Content="ATACS" Margin="4" Grid.Row="1" Grid.Column="2" Click="SelButonClicked" IsEnabled="False"/>
-			<local:CustomButton Content="ATACS + TASC/FD" Margin="4" Grid.Row="1" Grid.Column="3" Click="SelButonClicked" IsEnabled="False"/>
+			<local:CustomButton Content="D-ATC" Margin="4" Grid.Row="1" Grid.Column="0" Click="SelButonClicked"/>
+			<local:CustomButton Content="D-ATC + TASC/FD" Margin="4" Grid.Row="1" Grid.Column="1" Click="SelButonClicked"/>
+			<local:CustomButton Content="ATACS" Margin="4" Grid.Row="1" Grid.Column="2" Click="SelButonClicked"/>
+			<local:CustomButton Content="ATACS + TASC/FD" Margin="4" Grid.Row="1" Grid.Column="3" Click="SelButonClicked"/>
 
 			<local:CustomButton Content="ATC-6" Margin="4" Grid.Row="2" Grid.Column="0" Click="SelButonClicked" IsEnabled="False"/>
 			<local:CustomButton Content="ATC-10" Margin="4" Grid.Row="2" Grid.Column="1" Click="SelButonClicked" IsEnabled="False"/>

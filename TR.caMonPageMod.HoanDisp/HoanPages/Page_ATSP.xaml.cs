@@ -13,12 +13,5 @@ namespace TR.caMonPageMod.HoanDisp
 			DataContext = hlstate;
 			InitializeComponent();
 		}
-
-		private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
-		{
-			HoanLampClass h = (sender as Button)?.DataContext as HoanLampClass;
-			if(h is not null)
-				h.IsLighting = !h.IsLighting;
-		}
 	}
 }
