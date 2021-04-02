@@ -451,7 +451,7 @@
 
 		<local:HoanLamp DataContext="{Binding FD.SystemCutOut}"
 										Background="{StaticResource Lamp_Red}"
-										Grid.Column="6"
+										Grid.Column="7"
 										Grid.Row="2"
 										IsLighting="{Binding Value}">
 			<local:HoanLamp.Content>
