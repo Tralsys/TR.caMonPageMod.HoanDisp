@@ -1,0 +1,475 @@
+﻿<UserControl x:Class="TR.caMonPageMod.HoanDisp.Page_ATSP_Sn_TASCFD"
+						 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+						 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+						 xmlns:local="clr-namespace:TR.caMonPageMod.HoanDisp"
+						 xmlns:sys="clr-namespace:System;assembly=mscorlib"
+						 d:DataContext="{d:DesignInstance Type=local:HoanLampState}"
+						 FontFamily="Gen Jyuu Gothic X Monospace Normal"
+						 mc:Ignorable="d" >
+
+	<!-- ATS-P/Sn + TASC/FD Page -->
+	<!-- Prototype : E235-1000 -->
+
+	<UserControl.Resources>
+		<SolidColorBrush x:Key="Lamp_Green" Color="#8C7"/>
+		<SolidColorBrush x:Key="Lamp_Orange" Color="#FC7"/>
+		<SolidColorBrush x:Key="Lamp_Red" Color="#F77"/>
+		<SolidColorBrush x:Key="Lamp_White" Color="White"/>
+		<SolidColorBrush x:Key="PSnSepCol" Color="#999"/>
+
+		<RotateTransform x:Key="Rotate90" Angle="90"/>
+
+		<sys:Double x:Key="LampHeight">150</sys:Double>
+		<sys:Double x:Key="LampWidth">60</sys:Double>
+		<sys:Double x:Key="PSnSepWidth">10</sys:Double>
+
+		<GridLength x:Key="LampColWidth">70</GridLength>
+		<GridLength x:Key="LampRowHeight">180</GridLength>
+		<GridLength x:Key="P-Sn-SepColWidth">30</GridLength>
+
+
+		<Style TargetType="{x:Type local:HoanLamp}">
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="Padding" Value="0,0,0,0"/>
+			<Setter Property="Height" Value="{StaticResource LampHeight}"/>
+			<Setter Property="Width" Value="{StaticResource LampWidth}"/>
+			<Setter Property="LightShadowSize" Value="4"/>
+			<Setter Property="LightShadowOpacity" Value="0.5"/>
+		</Style>
+
+		<Style TargetType="{x:Type TextBlock}">
+			<Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ContentControl}, Path=Foreground}"/>
+			<Setter Property="Margin" Value="0,-3"/>
+			<Setter Property="Padding" Value="0"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+			<Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+			<Setter Property="FontSize" Value="18"/>
+		</Style>
+
+		<Style TargetType="StackPanel">
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+		</Style>
+	</UserControl.Resources>
+
+	<Grid Background="#303030" Height="600" MinWidth="800" HorizontalAlignment="Stretch">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="{StaticResource LampColWidth}"/>
+			<ColumnDefinition Width="{StaticResource LampColWidth}"/>
+			<ColumnDefinition Width="{StaticResource LampColWidth}"/>
+			<ColumnDefinition Width="{StaticResource LampColWidth}"/>
+			<ColumnDefinition Width="{StaticResource LampColWidth}"/>
+			<ColumnDefinition Width="{StaticResource LampColWidth}"/>
+			<ColumnDefinition Width="{StaticResource LampColWidth}"/>
+			<ColumnDefinition Width="{StaticResource P-Sn-SepColWidth}"/>
+			<ColumnDefinition Width="{StaticResource LampColWidth}"/>
+			<ColumnDefinition Width="{StaticResource LampColWidth}"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="{StaticResource LampRowHeight}"/>
+			<RowDefinition Height="{StaticResource LampRowHeight}"/>
+			<RowDefinition Height="{StaticResource LampRowHeight}"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<!--#region Row0-->
+		<local:HoanLamp DataContext="{Binding ATSP.Power}"
+												Background="{StaticResource Lamp_Green}"
+												Grid.Column="1"
+												IsLighting="{Binding Value}">
+			<local:HoanLamp.Content>
+				<StackPanel>
+					<TextBlock Text="Ｐ" Margin="0"/>
+					<TextBlock Text="電" Margin="0"/>
+					<TextBlock Text="源" Margin="0"/>
+				</StackPanel>
+			</local:HoanLamp.Content>
+		</local:HoanLamp>
+		<local:HoanLamp DataContext="{Binding ATSP.PatternOnComing}"
+												Background="{StaticResource Lamp_Orange}"
+												Grid.Column="2"
+												IsLighting="{Binding Value}">
+			<local:HoanLamp.Content>
+				<StackPanel>
+					<TextBlock Text="パ"/>
+					<TextBlock Text="タ"/>
+					<TextBlock Text="ー" RenderTransform="{StaticResource Rotate90}"/>
+					<TextBlock Text="ン"/>
+					<TextBlock Text="接"/>
+					<TextBlock Text="近"/>
+				</StackPanel>
+			</local:HoanLamp.Content>
+		</local:HoanLamp>
+		<local:HoanLamp DataContext="{Binding ATSP.NormalBrake}"
+												Background="{StaticResource Lamp_Orange}"
+												Grid.Column="3"
+												IsLighting="{Binding Value}">
+			<local:HoanLamp.Content>
+				<StackPanel>
+					<TextBlock Text="常"/>
+					<TextBlock Text="用"/>
+					<TextBlock Text="ブ"/>
+					<TextBlock Text="レ"/>
+					<TextBlock Text="ー" RenderTransform="{StaticResource Rotate90}"/>
+					<TextBlock Text="キ"/>
+				</StackPanel>
+			</local:HoanLamp.Content>
+		</local:HoanLamp>
+
+		<local:HoanLamp DataContext="{Binding ATSP.EmergencyBrake}"
+												Background="{StaticResource Lamp_Red}"
+												Grid.Column="4"
+												IsLighting="{Binding Value}">
+			<local:HoanLamp.Content>
+				<StackPanel>
+					<TextBlock Text="非"/>
+					<TextBlock Text="常"/>
+					<TextBlock Text="ブ"/>
+					<TextBlock Text="レ"/>
+					<TextBlock Text="ー" RenderTransform="{StaticResource Rotate90}"/>
+					<TextBlock Text="キ"/>
+				</StackPanel>
+			</local:HoanLamp.Content>
+		</local:HoanLamp>
+
+		<local:HoanLamp DataContext="{Binding ATSP.BrakeCutOut}"
+												Background="{StaticResource Lamp_Orange}"
+												Grid.Column="5"
+												IsLighting="{Binding Value}">
+			<local:HoanLamp.Content>
+				<StackPanel>
+					<TextBlock Text="ブ"/>
+					<TextBlock Text="レ"/>
+					<TextBlock Text="ー" RenderTransform="{StaticResource Rotate90}"/>
+					<TextBlock Text="キ"/>
+					<TextBlock Text="開"/>
+					<TextBlock Text="放"/>
+				</StackPanel>
+			</local:HoanLamp.Content>
+		</local:HoanLamp>
+
+		<local:HoanLamp DataContext="{Binding ATSP.ATSP}"
+												Background="{StaticResource Lamp_Green}"
+												Grid.Column="6"
+												IsLighting="{Binding Value}">
+			<local:HoanLamp.Content>
+				<StackPanel>
+					<TextBlock Text="Ａ"/>
+					<TextBlock Text="Ｔ"/>
+					<TextBlock Text="Ｓ"/>
+					<TextBlock Text="－" RenderTransform="{StaticResource Rotate90}"/>
+					<TextBlock Text="Ｐ"/>
+				</StackPanel>
+			</local:HoanLamp.Content>
+		</local:HoanLamp>
+
+		<local:HoanLamp DataContext="{Binding ATSP.Fault}"
+												Background="{StaticResource Lamp_Red}"
+												Grid.Column="7"
+												IsLighting="{Binding Value}">
+			<local:HoanLamp.Content>
+				<StackPanel>
+					<TextBlock Text="故"/>
+					<TextBlock Text=" "/>
+					<TextBlock Text="障"/>
+				</StackPanel>
+			</local:HoanLamp.Content>
+		</local:HoanLamp>
+
+		<Rectangle Grid.Column="8" Height="{StaticResource LampHeight}" Width="{StaticResource PSnSepWidth}" Fill="{StaticResource PSnSepCol}"/>
+
+		<local:HoanLamp DataContext="{Binding ATSSn.WhiteLamp}"
+												Background="{StaticResource Lamp_White}"
+												Grid.Column="9"
+												IsLighting="{Binding Value}">
+			<local:HoanLamp.Content>
+				<StackPanel>
+					<TextBlock Text="Ａ"/>
+					<TextBlock Text="Ｔ"/>
+					<TextBlock Text="Ｓ"/>
+					<TextBlock Text="電"/>
+					<TextBlock Text="源"/>
+				</StackPanel>
+			</local:HoanLamp.Content>
+		</local:HoanLamp>
+
+		<local:HoanLamp DataContext="{Binding ATSSn.RedLamp}"
+												Background="{StaticResource Lamp_Red}"
+												Grid.Column="10"
+												IsLighting="{Binding Value}">
+			<local:HoanLamp.Content>
+				<StackPanel>
+					<TextBlock Text="Ａ"/>
+					<TextBlock Text="Ｔ"/>
+					<TextBlock Text="Ｓ"/>
+					<TextBlock Text="動"/>
+					<TextBlock Text="作"/>
+				</StackPanel>
+			</local:HoanLamp.Content>
+		</local:HoanLamp>
+		<!--#endregion-->
+
+		<!--#region Row 1-->
+		<local:HoanLamp DataContext="{Binding TASC.Power}"
+										Background="{StaticResource Lamp_Green}"
+										Grid.Column="1"
+										Grid.Row="1"
+										IsLighting="{Binding Value}">
+			<local:HoanLamp.Content>
+				<StackPanel Orientation="Horizontal">
+					<StackPanel>
+						<TextBlock Text="電"/>
+						<TextBlock Text="源"/>
+					</StackPanel>
+					<StackPanel>
+						<TextBlock Text="Ｔ"/>
+						<TextBlock Text="Ａ"/>
+						<TextBlock Text="Ｓ"/>
+						<TextBlock Text="Ｃ"/>
+					</StackPanel>
+				</StackPanel>
+			</local:HoanLamp.Content>
+		</local:HoanLamp>
+
+		<local:HoanLamp DataContext="{Binding TASC.Pattern}"
+										Background="{StaticResource Lamp_Green}"
+										Grid.Column="2"
+										Grid.Row="1"
+										IsLighting="{Binding Value}">
+			<local:HoanLamp.Content>
+				<StackPanel Orientation="Horizontal">
+					<StackPanel>
+						<TextBlock Text="パ"/>
+						<TextBlock Text="タ"/>
+						<TextBlock Text="ー" RenderTransform="{StaticResource Rotate90}"/>
+						<TextBlock Text="ン"/>
+					</StackPanel>
+					<StackPanel>
+						<TextBlock Text="Ｔ"/>
+						<TextBlock Text="Ａ"/>
+						<TextBlock Text="Ｓ"/>
+						<TextBlock Text="Ｃ"/>
+					</StackPanel>
+				</StackPanel>
+			</local:HoanLamp.Content>
+		</local:HoanLamp>
+
+		<local:HoanLamp DataContext="{Binding TASC.Brake}"
+										Background="{StaticResource Lamp_Orange}"
+										Grid.Column="3"
+										Grid.Row="1"
+										IsLighting="{Binding Value}">
+			<local:HoanLamp.Content>
+				<StackPanel Orientation="Horizontal">
+					<StackPanel>
+						<TextBlock Text="ブ"/>
+						<TextBlock Text="レ"/>
+						<TextBlock Text="ー" RenderTransform="{StaticResource Rotate90}"/>
+						<TextBlock Text="キ"/>
+					</StackPanel>
+					<StackPanel>
+						<TextBlock Text="Ｔ"/>
+						<TextBlock Text="Ａ"/>
+						<TextBlock Text="Ｓ"/>
+						<TextBlock Text="Ｃ"/>
+					</StackPanel>
+				</StackPanel>
+			</local:HoanLamp.Content>
+		</local:HoanLamp>
+
+		<local:HoanLamp DataContext="{Binding TASC.Off}"
+										Background="{StaticResource Lamp_Red}"
+										Grid.Column="4"
+										Grid.Row="1"
+										IsLighting="{Binding Value}">
+			<local:HoanLamp.Content>
+				<StackPanel Orientation="Horizontal">
+					<StackPanel>
+						<TextBlock Text="切"/>
+					</StackPanel>
+					<StackPanel>
+						<TextBlock Text="Ｔ"/>
+						<TextBlock Text="Ａ"/>
+						<TextBlock Text="Ｓ"/>
+						<TextBlock Text="Ｃ"/>
+					</StackPanel>
+				</StackPanel>
+			</local:HoanLamp.Content>
+		</local:HoanLamp>
+
+		<local:HoanLamp DataContext="{Binding TASC.Fault}"
+										Background="{StaticResource Lamp_Red}"
+										Grid.Column="5"
+										Grid.Row="1"
+										IsLighting="{Binding Value}">
+			<local:HoanLamp.Content>
+				<StackPanel Orientation="Horizontal">
+					<StackPanel>
+						<TextBlock Text="故"/>
+						<TextBlock Text="障"/>
+					</StackPanel>
+					<StackPanel>
+						<TextBlock Text="Ｔ"/>
+						<TextBlock Text="Ａ"/>
+						<TextBlock Text="Ｓ"/>
+						<TextBlock Text="Ｃ"/>
+					</StackPanel>
+				</StackPanel>
+			</local:HoanLamp.Content>
+		</local:HoanLamp>
+		<!--#endregion Row 2-->
+
+		<!--#region Row 3-->
+		<local:HoanLamp DataContext="{Binding FD.RollingStopBrake}"
+										Background="{StaticResource Lamp_Orange}"
+										Grid.Column="1"
+										Grid.Row="2"
+										IsLighting="{Binding Value}">
+			<local:HoanLamp.Content>
+				<StackPanel Orientation="Horizontal">
+					<StackPanel>
+						<TextBlock Text="ブ"/>
+						<TextBlock Text="レ"/>
+						<TextBlock Text="ー" RenderTransform="{StaticResource Rotate90}"/>
+						<TextBlock Text="キ"/>
+					</StackPanel>
+					<StackPanel>
+						<TextBlock Text="転"/>
+						<TextBlock Text="動"/>
+						<TextBlock Text="防"/>
+						<TextBlock Text="止"/>
+					</StackPanel>
+				</StackPanel>
+			</local:HoanLamp.Content>
+		</local:HoanLamp>
+
+		<local:HoanLamp DataContext="{Binding FD.JustPoint}"
+										Background="{StaticResource Lamp_Green}"
+										Grid.Column="2"
+										Grid.Row="2"
+										IsLighting="{Binding Value}">
+			<local:HoanLamp.Content>
+				<StackPanel>
+					<TextBlock Text="定"/>
+					<TextBlock Text="位"/>
+					<TextBlock Text="置"/>
+				</StackPanel>
+			</local:HoanLamp.Content>
+		</local:HoanLamp>
+
+		<local:HoanLamp DataContext="{Binding FD.CarDoorAllClosd}"
+										Background="{StaticResource Lamp_Green}"
+										Grid.Column="3"
+										Grid.Row="2"
+										IsLighting="{Binding Value}">
+			<local:HoanLamp.Content>
+				<StackPanel Orientation="Horizontal">
+					<StackPanel>
+						<TextBlock Text="全"/>
+						<TextBlock Text="閉"/>
+					</StackPanel>
+					<StackPanel>
+						<TextBlock Text="車"/>
+						<TextBlock Text="両"/>
+						<TextBlock Text="ド"/>
+						<TextBlock Text="ア"/>
+					</StackPanel>
+				</StackPanel>
+			</local:HoanLamp.Content>
+		</local:HoanLamp>
+
+		<local:HoanLamp DataContext="{Binding FD.FDAllClosed}"
+										Background="{StaticResource Lamp_Green}"
+										Grid.Column="4"
+										Grid.Row="2"
+										IsLighting="{Binding Value}">
+			<local:HoanLamp.Content>
+				<StackPanel Orientation="Horizontal">
+					<StackPanel>
+						<TextBlock Text="全"/>
+						<TextBlock Text="閉"/>
+					</StackPanel>
+					<StackPanel>
+						<TextBlock Text="ホ"/>
+						<TextBlock Text="ー" RenderTransform="{StaticResource Rotate90}"/>
+						<TextBlock Text="ム"/>
+						<TextBlock Text="ド"/>
+						<TextBlock Text="ア"/>
+					</StackPanel>
+				</StackPanel>
+			</local:HoanLamp.Content>
+		</local:HoanLamp>
+
+		<local:HoanLamp DataContext="{Binding FD.SystemConnected}"
+										Background="{StaticResource Lamp_Green}"
+										Grid.Column="5"
+										Grid.Row="2"
+										IsLighting="{Binding Value}">
+			<local:HoanLamp.Content>
+				<StackPanel Orientation="Horizontal">
+					<StackPanel>
+						<TextBlock Text="連"/>
+						<TextBlock Text="携"/>
+					</StackPanel>
+					<StackPanel>
+						<TextBlock Text="ホ"/>
+						<TextBlock Text="ー" RenderTransform="{StaticResource Rotate90}"/>
+						<TextBlock Text="ム"/>
+						<TextBlock Text="ド"/>
+						<TextBlock Text="ア"/>
+					</StackPanel>
+				</StackPanel>
+			</local:HoanLamp.Content>
+		</local:HoanLamp>
+
+		<local:HoanLamp DataContext="{Binding FD.SystemDisconnected}"
+										Background="{StaticResource Lamp_Green}"
+										Grid.Column="6"
+										Grid.Row="2"
+										IsLighting="{Binding Value}">
+			<local:HoanLamp.Content>
+				<StackPanel Orientation="Horizontal">
+					<StackPanel>
+						<TextBlock Text="分"/>
+						<TextBlock Text="離"/>
+					</StackPanel>
+					<StackPanel>
+						<TextBlock Text="ホ"/>
+						<TextBlock Text="ー" RenderTransform="{StaticResource Rotate90}"/>
+						<TextBlock Text="ム"/>
+						<TextBlock Text="ド"/>
+						<TextBlock Text="ア"/>
+					</StackPanel>
+				</StackPanel>
+			</local:HoanLamp.Content>
+		</local:HoanLamp>
+
+		<local:HoanLamp DataContext="{Binding FD.SystemCutOut}"
+										Background="{StaticResource Lamp_Red}"
+										Grid.Column="6"
+										Grid.Row="2"
+										IsLighting="{Binding Value}">
+			<local:HoanLamp.Content>
+				<StackPanel Orientation="Horizontal">
+					<StackPanel>
+						<TextBlock Text="開"/>
+						<TextBlock Text="放"/>
+					</StackPanel>
+					<StackPanel>
+						<TextBlock Text="ホ"/>
+						<TextBlock Text="ー" RenderTransform="{StaticResource Rotate90}"/>
+						<TextBlock Text="ム"/>
+						<TextBlock Text="ド"/>
+						<TextBlock Text="ア"/>
+					</StackPanel>
+				</StackPanel>
+			</local:HoanLamp.Content>
+		</local:HoanLamp>
+		<!--#endregion Row 3-->
+	</Grid>
+</UserControl>
