@@ -413,7 +413,7 @@
 		</local:HoanLamp>
 
 		<local:HoanLamp DataContext="{Binding TASC_Off}"
-										Background="{StaticResource Lamp_Red}"
+										Background="{StaticResource Lamp_Orange}"
 										Grid.Column="4"
 										Grid.Row="2"
 										IsLighting="{Binding IsLighting}">
