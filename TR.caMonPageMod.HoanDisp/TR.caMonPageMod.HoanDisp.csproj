@@ -9,11 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="fonts\GenJyuuGothicX-Monospace-Medium.ttf" />
     <None Remove="images\SelectBtn_Pushed.png" />
     <None Remove="images\SelectBtn_Released.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="fonts\GenJyuuGothicX-Monospace-Medium.ttf" />
     <Resource Include="images\SelectBtn_Pushed.png" />
     <Resource Include="images\SelectBtn_Released.png" />
   </ItemGroup>
