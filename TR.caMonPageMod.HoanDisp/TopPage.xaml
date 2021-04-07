@@ -6,7 +6,7 @@
 			xmlns:local="clr-namespace:TR.caMonPageMod.HoanDisp"
 			mc:Ignorable="d" 
 			d:DesignHeight="600" d:DesignWidth="800"
-			FontFamily="Gen Jyuu Gothic X Monospace Medium"
+			FontFamily="./fonts/#Gen Jyuu Gothic X Monospace Medium"
 			Title="TopPage">
 
 	<Viewbox>
