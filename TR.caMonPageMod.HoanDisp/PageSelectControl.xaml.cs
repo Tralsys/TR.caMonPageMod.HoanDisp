@@ -8,7 +8,7 @@ namespace TR.caMonPageMod.HoanDisp
 	/// </summary>
 	public partial class PageSelectControl : UserControl
 	{
-		TopPage TP { get; }
+		internal TopPage TP { get; }
 		static HoanLampState HLampState { get; } = new HoanLampState();
 
 		static readonly string CopyrightNotice_Font = @"本Modでは表示フォントに「源柔ゴシック」(http://jikasei.me/font/genjyuu/) を使用しています。
@@ -65,9 +65,6 @@ Licensed under SIL Open Font License 1.1 (http://scripts.sil.org/OFL)
 			}
 		}
 
-		private void GoSettingPushed(object sender, RoutedEventArgs e)
-		{
-
-		}
+		private void GoSettingPushed(object sender, RoutedEventArgs e) => TP.ChangeThePage(new SettingPage(HLampState, this));
 	}
 }
