@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="TR.caMonPageMod.HoanDisp.SettingPage"
+						 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+						 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+						 xmlns:local="clr-namespace:TR.caMonPageMod.HoanDisp"
+						 d:DataContext="{d:DesignInstance Type=local:HoanLampState}"
+						 mc:Ignorable="d" 
+						 FontSize="14"
+						 Height="600" Width="800">
+
+	<UserControl.Resources>
+		<Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+			<EventSetter Event="Click" Handler="HoanSelectBtnClicked"/>
+			<Setter Property="Padding" Value="20,10"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+		</Style>
+	</UserControl.Resources>
+	
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="40"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="60"/>
+		</Grid.RowDefinitions>
+
+		<ListView Grid.Row="1" x:Name="SettingListView" Padding="4" Margin="10">
+			<ListView.View>
+				<GridView>
+					<GridViewColumn Header="Name" DisplayMemberBinding="{Binding PropName}"/>
+					<GridViewColumn Header="Index">
+						<GridViewColumn.CellTemplate>
+							<DataTemplate>
+								<TextBox Text="{Binding TargetObject.Index, UpdateSourceTrigger=PropertyChanged}" Width="60" Margin="4,2" TextAlignment="Right"/>
+							</DataTemplate>
+						</GridViewColumn.CellTemplate>
+					</GridViewColumn>
+					<GridViewColumn Header="Value" DisplayMemberBinding="{Binding TargetObject.Value}"/>
+					<GridViewColumn Header="RawValue" DisplayMemberBinding="{Binding TargetObject.RawValue}"/>
+				</GridView>
+			</ListView.View>
+		</ListView>
+		
+		<Grid Grid.Row="2">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="40"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="40"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<Button Grid.Column="0" Content="LoadFromFile" Click="LoadButtonClicked" Padding="5,10" IsEnabled="False"/>
+
+			<Button Content="ATACS" Grid.Column="2" DataContext="{Binding ATACS}"/>
+			<Button Content="ATS-P" Grid.Column="3" DataContext="{Binding ATSP}"/>
+			<Button Content="ATS-Sn" Grid.Column="4" DataContext="{Binding ATSSn}"/>
+			<Button Content="D-ATC" Grid.Column="5" DataContext="{Binding DATC}"/>
+			<Button Content="FD" Grid.Column="6" DataContext="{Binding FD}"/>
+			<Button Content="TASC" Grid.Column="7" DataContext="{Binding TASC}"/>
+
+			<!--Save Button >>> Most Right Column-->
+			<Button Grid.Column="999" Content="Save" Click="SaveButtonClicked" IsEnabled="False"/>
+		</Grid>
+	</Grid>
+</UserControl>
