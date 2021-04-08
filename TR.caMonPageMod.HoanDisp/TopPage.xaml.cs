@@ -10,6 +10,23 @@ namespace TR.caMonPageMod.HoanDisp
 	public partial class TopPage : Page
 	{
 		internal caMonIF CamonIF { get; }
+		bool _Is1610Mode = false;
+		internal bool Is1610Mode
+		{
+			get => _Is1610Mode;
+			set
+			{
+				if (Is1610Mode != value)
+				{
+					_Is1610Mode = value;
+
+					if (MainViewBox.Child is Control c)
+						SetContentWidth(c);
+				}
+			}
+		}
+		void SetContentWidth(Control c) => c.Width = Is1610Mode ? 960 : 800;
+		
 		public TopPage(caMonIF camonif)
 		{
 			CamonIF = camonif;
@@ -24,7 +41,10 @@ namespace TR.caMonPageMod.HoanDisp
 		{
 			MainViewBox.Child = elem;
 			if (elem is Control c)
+			{
 				c.FontFamily = this.FontFamily;
+				SetContentWidth(c);
+			}
 		}
 	}
 }
