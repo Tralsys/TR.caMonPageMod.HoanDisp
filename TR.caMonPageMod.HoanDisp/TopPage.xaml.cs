@@ -10,7 +10,7 @@ namespace TR.caMonPageMod.HoanDisp
 	public partial class TopPage : Page
 	{
 		internal caMonIF CamonIF { get; }
-		bool _Is1610Mode = true;
+		bool _Is1610Mode = false;
 		internal bool Is1610Mode
 		{
 			get => _Is1610Mode;
