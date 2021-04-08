@@ -66,5 +66,6 @@ Licensed under SIL Open Font License 1.1 (http://scripts.sil.org/OFL)
 		}
 
 		private void GoSettingPushed(object sender, RoutedEventArgs e) => TP.ChangeThePage(new SettingPage(HLampState, this));
+		private void Change1610ModePushed(object sender, RoutedEventArgs e) => TP.Is1610Mode = !TP.Is1610Mode;
 	}
 }
